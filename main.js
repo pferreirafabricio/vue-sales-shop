@@ -25,16 +25,16 @@ Vue.component('product', {
                 <li v-for="detail in details">{{ detail }}</li>
             </ul>
 
-
-            <div 
+            <div class="inline-div">
+                <div 
                 v-for="(variant, index) in variants" 
                 v-bind:key="variant.variantId"
                 class="color-box"
                 :style="{ backgroundColor: variant.variantColor}"
                 @mouseover="updateProduct(index)"
-            >
+                >
+                </div>
             </div>
-
 
             <!-- <ul>
                 <span>Sizes:</span>
@@ -43,15 +43,13 @@ Vue.component('product', {
                 </li>
             </ul> -->
 
-            <div class="buttons">
-
-                <button v-on:click="addToCart" v-bind:disabled="!inStock">Add to cart</button>
-                <button @click="removeToCart">Remove to cart</button>
+            <div>
+                <button class="btn btn-add" v-on:click="addToCart" v-bind:disabled="!inStock">+ Add to cart</button>
+                <button class="btn btn-remove" @click="removeToCart">- Remove to cart</button>
             </div>
-
-            <product-tabs :reviews="reviews"></product-tabs>
         </div>
     </div>
+    <product-tabs :reviews="reviews" class="product-review"></product-tabs>
     `,
     data() {
         return {
