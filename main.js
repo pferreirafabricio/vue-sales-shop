@@ -8,48 +8,51 @@ Vue.component('product', {
         }
     },
     template: `
-    <div class="product">
-        <div class="product-image">
-            <img v-bind:src="image" :alt="altText" width="400px" />
-        </div>
+    <div>
+        <div class="product">
+            <div class="product-image">
+                <img v-bind:src="image" :alt="altText" width="400px" />
+            </div>
 
-        <div class="product-info">
-            <h1> {{ title }} </h1>
-            <h3 v-if="onSale">ON SALE!!!</h3>
-            <p>Shipping: {{ shipping }}</p>
-            <p v-if="inStock > 10">In Stock</p>
-            <p v-else-if="inStock <= 10 && inStock > 0">Almost sold out!</p>
-            <p v-else :style="{ 'text-decoration':  inStock ? 'none' : 'line-through'}">Out of Stock</p>
+            <div class="product-info">
+                <h1> {{ title }} </h1>
+                <h3 v-if="onSale">ON SALE!!!</h3>
+                <p>Shipping: {{ shipping }}</p>
+                <p v-if="inStock > 10">In Stock</p>
+                <p v-else-if="inStock <= 10 && inStock > 0">Almost sold out!</p>
+                <p v-else :style="{ 'text-decoration':  inStock ? 'none' : 'line-through'}">Out of Stock</p>
 
-            <ul>
-                <li v-for="detail in details">{{ detail }}</li>
-            </ul>
+                <ul>
+                    <li v-for="detail in details">{{ detail }}</li>
+                </ul>
 
-            <div class="inline-div">
-                <div 
-                v-for="(variant, index) in variants" 
-                v-bind:key="variant.variantId"
-                class="color-box"
-                :style="{ backgroundColor: variant.variantColor}"
-                @mouseover="updateProduct(index)"
-                >
+                <div class="inline-div">
+                    <div 
+                    v-for="(variant, index) in variants" 
+                    v-bind:key="variant.variantId"
+                    class="color-box"
+                    :style="{ backgroundColor: variant.variantColor}"
+                    @mouseover="updateProduct(index)"
+                    >
+                    </div>
+                </div>
+
+                <!-- <ul>
+                    <span>Sizes:</span>
+                    <li v-for="size in shoesSizes" v-bind:key="size">
+                        {{ size }}
+                    </li>
+                </ul> -->
+
+                <div>
+                    <button class="btn btn-add" v-on:click="addToCart" v-bind:disabled="!inStock">+ Add to cart</button>
+                    <button class="btn btn-remove" @click="removeToCart">- Remove to cart</button>
                 </div>
             </div>
-
-            <!-- <ul>
-                <span>Sizes:</span>
-                <li v-for="size in shoesSizes" v-bind:key="size">
-                    {{ size }}
-                </li>
-            </ul> -->
-
-            <div>
-                <button class="btn btn-add" v-on:click="addToCart" v-bind:disabled="!inStock">+ Add to cart</button>
-                <button class="btn btn-remove" @click="removeToCart">- Remove to cart</button>
-            </div>
         </div>
+        
+        <product-tabs :reviews="reviews" class="product-review"></product-tabs>    
     </div>
-    <product-tabs :reviews="reviews" class="product-review"></product-tabs>
     `,
     data() {
         return {
@@ -117,9 +120,9 @@ Vue.component('product', {
 Vue.component("product-review", {
     // props:a,
     template: `
-    <form @submit.prevent="onSubmit">
+    <form @submit.prevent="onSubmit" class="form">
 
-        <p v-if="errors.length">
+        <p v-if="errors.length" class="error">
             <b>Plase correct the following error(s): </b>
             <ul>
                 <li v-for="error in errors">{{error}}</li>
@@ -148,7 +151,7 @@ Vue.component("product-review", {
         </p>
 
         <p>
-            <input type="submit" value="submit">
+            <input type="submit" value="Enviar" class="btn btn-submit">
         </p>
     </form>
     `,
@@ -192,13 +195,13 @@ Vue.component('product-tabs', {
     template: `
         <div>
             <span
-                class="tab"
+                class="tab titles"
                 :class="{'active-tab': selectedTab === tab}"
                 v-for="(tab, index) in tabs"
                 :key="index"
                 @click="selectedTab = tab"
             >
-                {{tab}}
+                {{ tab }}
             </span>
 
             <div v-show="selectedTab === 'Reviews'">
@@ -222,7 +225,7 @@ Vue.component('product-tabs', {
     data() {
         return {
             tabs: ['Reviews', 'Make a Review'],
-            selectedTab: 'Reviews'
+            selectedTab: 'Make a Review'
         }
     }
 })
