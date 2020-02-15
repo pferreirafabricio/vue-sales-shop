@@ -13,7 +13,7 @@
 
     <div id="app">
         <div>
-            <p class="cart">Cart ({{ cart.length }})</p>
+            <p class="cart"> <i class="fas fa-shopping-cart"></i> Cart ({{ cart.length }})</p>
         </div>
 
         <product :premium="premium" @add-to-cart="updateCart" @remove-to-cart="removeCart"></product>
@@ -21,6 +21,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="./main.js"></script>
+    <!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/ce6b80ece0.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -12,16 +12,27 @@ Vue.component('product', {
         <div class="product">
             <div class="product-image">
                 <img v-bind:src="image" :alt="altText" width="400px" />
+                <p> Sold by: Nike Brasil </p>
+                <p> Available sizes: {{ shoesSizes.toString() }} </p>
             </div>
 
             <div class="product-info">
-                <h1> {{ title }} </h1>
-                <h3 v-if="onSale">ON SALE!!!</h3>
-                <p>Shipping: {{ shipping }}</p>
-                <p v-if="inStock > 10">In Stock</p>
-                <p v-else-if="inStock <= 10 && inStock > 0">Almost sold out!</p>
-                <p v-else :style="{ 'text-decoration':  inStock ? 'none' : 'line-through'}">Out of Stock</p>
-
+                <div> 
+                    <h1> {{ title }} </h1>
+                    <hr/>
+                    <h3 v-if="onSale">ON SALE!!!</h3>
+                    <p><i class="fas fa-star"></i> Shipping: {{ shipping }}</p>
+                    <p v-if="inStock > 10">In Stock</p>
+                    <p v-else-if="inStock <= 10 && inStock > 0"> 
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Almost sold out!
+                    </p>
+                    <p v-else :style="{ 'text-decoration':  inStock ? 'none' : 'line-through'}">
+                        <i class="fas fa-exclamation-circle" style="color: red;"></i>
+                        Out of Stock
+                    </p>
+                </div>
+              
                 <ul>
                     <li v-for="detail in details">{{ detail }}</li>
                 </ul>
@@ -44,9 +55,15 @@ Vue.component('product', {
                     </li>
                 </ul> -->
 
-                <div>
-                    <button class="btn btn-add" v-on:click="addToCart" v-bind:disabled="!inStock">+ Add to cart</button>
-                    <button class="btn btn-remove" @click="removeToCart">- Remove to cart</button>
+                <div class="buttons">
+                    <button class="btn btn-add" v-on:click="addToCart" v-bind:disabled="!inStock">
+                        <i class="fas fa-plus-circle"></i>
+                        Add to cart
+                    </button>
+                    <button class="btn btn-remove" @click="removeToCart">
+                        <i class="fas fa-trash" style="color: orangered;"></i>
+                        Remove to cart
+                    </button>
                 </div>
             </div>
         </div>
@@ -66,14 +83,14 @@ Vue.component('product', {
             variants: [
                 {
                     variantId: 2234,
-                    variantColor: "green",
-                    variantImage: "./img/shoes.jpg",
+                    variantColor: "orangered",
+                    variantImage: "./img/shoes2.webp",
                     variantQuantity: 10
                 },
                 {
                     variantId: 2235,
-                    variantColor: "blue",
-                    variantImage: "./img/shoes.jpeg",
+                    variantColor: "orange",
+                    variantImage: "./img/shoes3.webp",
                     variantQuantity: 0
                 }
             ],

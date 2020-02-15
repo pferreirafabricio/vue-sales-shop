@@ -9,7 +9,7 @@ body {
 .nav-bar {
     width: 100%;
     height: 50px;
-    background: linear-gradient(90deg, rgb(223, 226, 20), rgb(252, 84, 18));
+    background: linear-gradient(90deg, rgb(251, 255, 0), rgb(252, 84, 18));
 }
 
 .tab {
@@ -36,7 +36,7 @@ body {
 .cart {
     margin-left: auto;
     margin-right: 20px;
-    width: 60px;
+    width: 80px;
     border: 1px solid rgb(189, 188, 188);
     border-radius: 5px;
     padding: 8px;
@@ -46,47 +46,72 @@ body {
 .product {
     display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 20px;
+    gap: 20px;
+    justify-items: center;
 }
 
 .product-image {
     margin-left: 20px;
     border: 1px solid rgb(196, 196, 196);
     border-radius: 10px;
-    padding: 2px;
+    width: 70%;
+    height: 70%;
 }
 
-.product-image img{
-   background-size: cover; 
+.product-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
 }
 
-.product-info:not(.product-image) {
+.product-info {
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 }
 
-.product-info ul {
-    list-style: none;
-    margin-bottom: 20px;
+.product-info hr {
+    width: 100%;
+    border: 1px solid orangered;
+    stroke-linecap: round;
 }
+
+.product-info i {
+    font-size: 23px;
+    margin-right: 5px;
+    color: rgb(255, 217, 0);
+}
+
+/* .product-info ul {
+    /* list-style: none; 
+    margin-bottom: 20px;
+} */
 
 .product-info ul li{ 
-   text-align: center;
+   text-align: left;
+}
+.inline-div {
+    height: fit-content;
 }
 
 .color-box {
     display: inline-block;
     width: 40px;
     height: 40px;
-    margin-right: 10px;
-    margin-bottom: 20px;
+    margin: 10px 0px 30px 20px;
+    /* margin-right: 10px;
+    margin-bottom: 30px; */
 }
+
+.product-info button i{ 
+    font-size: 16px;
+    color: #fff;
+ }
 
 .btn {
     height: 40px;
-    width: 140px;
+    width: 150px;
     border-radius: 5px;
     border: none;
     /* border: 1px solid  rgb(196, 196, 196); */
@@ -148,7 +173,7 @@ body {
     height: 60px;
     border-radius: 5px;
     border: 1px solid rgb(189, 188, 188);
-    resize: none;
+    resize: vertical;
 }
 
 .form p select {
