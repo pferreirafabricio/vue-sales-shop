@@ -2,7 +2,7 @@
 
 ## :eyes: Como ficou?
 
-<img src="/projectImages/screen-home.png" width="1000px"></img>
+<img src="/projectImages/screen-home2.png" width="1000px"></img>
 <hr/>
 <img src="/projectImages/screen-review.png" width="1000px"></img>
 <hr/>
