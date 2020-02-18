@@ -139,24 +139,24 @@ Vue.component("product-review", {
     template: `
     <form @submit.prevent="onSubmit" class="form">
 
-        <p v-if="errors.length" class="error">
+        <div v-if="errors.length" class="error">
             <b>Plase correct the following error(s): </b>
             <ul>
                 <li v-for="error in errors">{{error}}</li>
             </ul>
-        </p>
+        </div>
 
-        <p>
+        <div>
             <label for="name">Name:</label>
             <input id="name" v-model="name">
-        </p>
+        </div>
 
-        <p>
-            <label for="review">Review:</label>
-            <textarea id="review" v-model="review"></textarea>
-        </p>
+        <div>
+            <label for="review" style="vertical-align: middle;">Review:</label>
+            <input id="review" v-model="review" class="textReview"></input>
+        </div>
 
-        <p>
+        <div>
             <label for="rating">Rating:</label>
             <select id="rating" v-model.number="rating">
                 <option>1</option>
@@ -165,11 +165,11 @@ Vue.component("product-review", {
                 <option>4</option>
                 <option>5</option>
             </select>
-        </p>
+        </div>
 
-        <p>
-            <input type="submit" value="Enviar" class="btn btn-submit">
-        </p>
+        <div>
+            <input type="submit" value="Send" class="btn btn-submit">
+        </div>
     </form>
     `,
     data() {
@@ -225,13 +225,15 @@ Vue.component('product-tabs', {
                 <h2>Reviews</h2>
                 <p v-if="!reviews.length">The are no reviews yet.</p>
 
-                <ul>
-                    <li v-for="review in reviews">
-                        <p> {{review.name}} </p>
-                        <p> Rating: {{review.rating}} </p>
-                        <p> Review: {{review.review}} </p>
-                    </li>
-                </ul>
+                
+                <div class="reviewBox"> 
+                    <div v-for="review in reviews">
+                        <h3 class="revName"> {{review.name}} </h3>
+                        <p class="revRating"> <b>Rating:</b> {{review.rating}} <i class="fas fa-star"></i> </p>
+                        <p class="revReview"> <b>Review:</b> <span>{{review.review}}</span> </p>
+                    </div>
+                </div>
+                
             </div>
 
             <product-review 

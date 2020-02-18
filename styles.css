@@ -65,10 +65,11 @@ body {
 }
 
 .product-info {
-    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
 }
 
 .product-info hr {
@@ -140,8 +141,9 @@ body {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
+    text-align: center;
 }
 
 .error {
@@ -155,28 +157,28 @@ body {
 
 .error ul {
     text-align: left;
-    /* list-style: none; */
 }
 
-.form p label {
+.form div label {
     margin-right: 10px;
     font-weight: bold;
 }
 
-.form p input {
+.form div {
+    margin-bottom: 20px;
+}
+
+.form div input {
     height: 30px;
     border-radius: 5px;
     border: 1px solid rgb(189, 188, 188); 
 }
 
-.form p textarea {
+.form div .textReview {
     height: 60px;
-    border-radius: 5px;
-    border: 1px solid rgb(189, 188, 188);
-    resize: vertical;
 }
 
-.form p select {
+.form div select {
     height: 30px;
     width: 40px;
     border-radius: 5px;
@@ -186,4 +188,40 @@ body {
 .btn-submit {
     border: none;
     background-color: orangered;
+}
+
+.reviewBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.reviewBox div {
+    border: 1px solid rgb(189, 188, 188);
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    margin-right: 10px;
+}
+
+.reviewBox .revName {
+    color: orangered;
+}
+
+.reviewBox .revRating {
+    text-align: left;
+} 
+
+.reviewBox .revReview {
+    text-align: left;
+} 
+
+.reviewBox .revReview span::before {
+    content: '"';
+}
+
+.reviewBox .revReview span::after {
+    content: '"';
 }
